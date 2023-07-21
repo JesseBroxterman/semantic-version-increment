@@ -15,6 +15,9 @@ try {
     const current_Version = core.getInput('current_version');
     const pr_labels = core.getInput('pr_labels');
 
+    console.log("current version = " + current_Version);
+    console.log("labels = " + pr_labels);
+
     //take the current version and separate it into it's components: Major, Minor, & Patch
     let [major, minor, patch] = current_Version.split(".");
 
@@ -28,6 +31,7 @@ try {
     }
 
     let new_version = major.concat('.', minor, '.', patch);
+    console.log("new version = " + new_version);
 
 } catch (error) {
     core.setFailed(error.message);
