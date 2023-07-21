@@ -13,7 +13,8 @@ const Labels_In_Use = {
 
 try {
     const current_Version = core.getInput('current_version');
-    const pr_labels = core.getInput('pr_labels');
+    const pr_labels_stringified = core.getInput('pr_labels');
+    const pr_labels = pr_labels_stringified.split(',');
 
     console.log("current version = " + current_Version);
     console.log("labels = " + pr_labels);
