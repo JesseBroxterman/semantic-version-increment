@@ -35,6 +35,7 @@ try {
 
     let new_version = major.concat('.', minor, '.', patch);
     console.log("new version = " + new_version);
+    core.setOutput("new_version", new_version)
 
 } catch (error) {
     core.setFailed(error.message);
