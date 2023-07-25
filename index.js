@@ -22,11 +22,13 @@ try {
     //take the current version and separate it into it's components: Major, Minor, & Patch
     let [major, minor, patch] = current_Version.split(".");
 
-    if (pr_labels.includes(Labels_In_Use.Enhancement)) {
+    if (pr_labels.includes(Labels_In_Use.Enhancement) || pr_labels == Labels_In_Use.Enhancement) {
         minor = minor++;
         patch = 0;
-    } else if (pr_labels.includes(Labels_In_Use.Bug)) {
+        console.log("Matched enhancement.");
+    } else if (pr_labels.includes(Labels_In_Use.Bug) || pr_labels == Labels_In_Use.Bug) {
         patch = patch++;
+        console.log("Matched bug.");
     } else {
         throw new Error('There is no label on the pull request.');
     }
