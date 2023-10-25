@@ -31,7 +31,7 @@ try {
     } else if (pr_labels.includes(Labels_In_Use.Bug) || pr_labels == Labels_In_Use.Bug) {
         patch = parseInt(patch) + 1;
         console.log("Matched bug.");
-    } else if (pr_labels.includes(Labels_In_Use.Chore) || pr_labels == Labels_In_Use.Chore || pr_labels.includes(Labels_In_Use.Subtask) || pr_labels ==Labels_In_Use.Chore) {
+    } else if (pr_labels.includes(Labels_In_Use.Chore) || pr_labels == Labels_In_Use.Chore || pr_labels.includes(Labels_In_Use.Subtask) || pr_labels ==Labels_In_Use.Subtask) {
         //do nothing
     } else {
         throw new Error('There is no label on the pull request.');
