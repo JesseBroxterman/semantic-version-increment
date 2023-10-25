@@ -8,7 +8,9 @@ const Increment_Type = {
 
 const Labels_In_Use = {
     Bug: 'bug',
-    Enhancement: 'enhancement'
+    Enhancement: 'enhancement',
+    Chore: 'chore',
+    Subtask: 'subtask'
 }
 
 try {
@@ -29,6 +31,8 @@ try {
     } else if (pr_labels.includes(Labels_In_Use.Bug) || pr_labels == Labels_In_Use.Bug) {
         patch = parseInt(patch) + 1;
         console.log("Matched bug.");
+    } else if (pr_labels.includes(Labels_In_Use.Chore) || pr_labels == Labels_In_Use.Chore || pr_labels.includes(Labels_In_Use.Subtask) || pr_labels ==Labels_In_Use.Chore) {
+        //do nothing
     } else {
         throw new Error('There is no label on the pull request.');
     }
