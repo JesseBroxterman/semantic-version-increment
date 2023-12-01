@@ -6,35 +6,33 @@ const Increment_Type = {
     Patch: 'patch' 
 }
 
-const Labels_In_Use = {
-    Bug: 'bug',
-    Enhancement: 'enhancement',
-    Chore: 'chore',
-    Subtask: 'subtask'
+const Issue_Types = {
+    Bug: 'Bug',
+    Subtask: 'Subtask',
+    Story: 'Story',
+    Task: 'Task'
 }
 
 try {
     const current_Version = core.getInput('current_version');
-    const pr_labels_stringified = core.getInput('pr_labels');
-    const pr_labels = pr_labels_stringified.split(',');
+    const issue_type = core.getInput('issue_type');
+
 
     console.log("current version = " + current_Version);
-    console.log("labels = " + pr_labels);
+    console.log("issue type = " + issue_type);
 
     //take the current version and separate it into it's components: Major, Minor, & Patch
     let [major, minor, patch] = current_Version.split(".");
 
-    if (pr_labels.includes(Labels_In_Use.Enhancement) || pr_labels == Labels_In_Use.Enhancement) {
+    if (issue_type == Issue_Types.Story) {
         minor = parseInt(minor) + 1;
         patch = 0;
-        console.log("Matched enhancement.");
-    } else if (pr_labels.includes(Labels_In_Use.Bug) || pr_labels == Labels_In_Use.Bug || pr_labels.includes(Labels_In_Use.Chore) || pr_labels == Labels_In_Use.Chore) {
+        console.log("Matched story, incremented minor value.");
+    } else if (issue_type == Issue_Types.Bug || issue_type == Issue_Types.Subtask || issue_type == Issue_Types.Task) {
         patch = parseInt(patch) + 1;
-        console.log("Matched bug or chore.");
-    } else if (pr_labels.includes(Labels_In_Use.Subtask) || pr_labels ==Labels_In_Use.Subtask) {
-        //do nothing
+        console.log("Incremented patch value.");
     } else {
-        throw new Error('There is no label on the pull request.');
+        throw new Error('No issue match.');
     }
 
     let new_version = major.concat('.', minor, '.', patch);

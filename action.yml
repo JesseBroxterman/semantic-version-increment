@@ -4,8 +4,8 @@ inputs:
   current_version:  # id of input
     description: 'The current version number'
     required: true
-  pr_labels:
-    description: 'The names of the labels on the pull request'
+  issue_type:
+    description: 'The type of issue, to be used for incrementing the version number.'
     required: true
 outputs:
   new_version: # id of output
