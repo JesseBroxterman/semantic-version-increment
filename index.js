@@ -10,7 +10,12 @@ const Issue_Types = {
     Bug: 'Bug',
     Subtask: 'Subtask',
     Story: 'Story',
-    Task: 'Task'
+    Task: 'Task',
+    Change: 'Change',
+    Incident: 'Incident',
+    Problem: 'Problem',
+    Service_Request: 'Service_Request',
+    Service_Request_Approvals: 'Service_Request_With_Approvals'
 }
 
 try {
@@ -24,11 +29,11 @@ try {
     //take the current version and separate it into it's components: Major, Minor, & Patch
     let [major, minor, patch] = current_Version.split(".");
 
-    if (issue_type == Issue_Types.Story) {
+    if (issue_type == Issue_Types.Story || issue_type == Issue_Types.Service_Request || issue_type == Issue_Types.Service_Request_With_Approvals) {
         minor = parseInt(minor) + 1;
         patch = 0;
         console.log("Matched story, incremented minor value.");
-    } else if (issue_type == Issue_Types.Bug || issue_type == Issue_Types.Subtask || issue_type == Issue_Types.Task) {
+    } else if (issue_type == Issue_Types.Bug || issue_type == Issue_Types.Task || issue_type == Issue_Types.Incident || issue_type == Issue_Types.Problem) {
         patch = parseInt(patch) + 1;
         console.log("Incremented patch value.");
     } else {
