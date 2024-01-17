@@ -14,8 +14,8 @@ const Issue_Types = {
     Change: 'Change',
     Incident: 'Incident',
     Problem: 'Problem',
-    Service_Request: 'Service_Request',
-    Service_Request_Approvals: 'Service_Request_With_Approvals'
+    Service_Request: 'Service Request',
+    Service_Request_Approvals: 'Service Request With_Approvals'
 }
 
 try {
