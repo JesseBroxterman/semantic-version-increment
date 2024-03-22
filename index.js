@@ -8,7 +8,7 @@ const Increment_Type = {
 
 const Issue_Types = {
     Bug: 'Bug',
-    Subtask: 'Subtask',
+    Subtask: 'Sub-task',
     Story: 'Story',
     Task: 'Task',
     Change: 'Change',
