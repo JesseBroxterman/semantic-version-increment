@@ -29,13 +29,15 @@ try {
     //take the current version and separate it into it's components: Major, Minor, & Patch
     let [major, minor, patch] = current_Version.split(".");
 
-    if (issue_type == Issue_Types.Story || issue_type == Issue_Types.Service_Request || issue_type == Issue_Types.Service_Request_With_Approvals) {
+    if (issue_type == Issue_Types.Story || issue_type == Issue_Types.Service_Request || issue_type == Issue_Types.Service_Request_With_Approvals || issue_type == Issue_Types.Change) {
         minor = parseInt(minor) + 1;
         patch = 0;
         console.log("Matched story, incremented minor value.");
     } else if (issue_type == Issue_Types.Bug || issue_type == Issue_Types.Task || issue_type == Issue_Types.Incident || issue_type == Issue_Types.Problem) {
         patch = parseInt(patch) + 1;
         console.log("Incremented patch value.");
+    } else if (issue_type == Issue_Types.Sub-task) {
+        //do nothing
     } else {
         throw new Error('No issue match.');
     }
