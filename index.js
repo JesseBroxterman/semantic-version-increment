@@ -36,7 +36,7 @@ try {
     } else if (issue_type == Issue_Types.Bug || issue_type == Issue_Types.Task || issue_type == Issue_Types.Incident || issue_type == Issue_Types.Problem) {
         patch = parseInt(patch) + 1;
         console.log("Incremented patch value.");
-    } else if (issue_type == Issue_Types.Sub-task) {
+    } else if (issue_type == Issue_Types.Subtask) {
         //do nothing
     } else {
         throw new Error('No issue match.');
