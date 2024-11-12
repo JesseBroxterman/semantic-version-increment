@@ -3,12 +3,13 @@ const github = require('@actions/github')
 
 const Increment_Type = {
     Minor: 'minor',
-    Patch: 'patch' 
+    Patch: 'patch',
+    Subtask: 'subtask'
 }
 
 const Issue_Types = {
     Bug: 'Bug',
-    Subtask: 'Sub-task',
+    Sub-task: 'Sub-task',
     Story: 'Story',
     Task: 'Task',
     Change: 'Change',
@@ -27,7 +28,7 @@ try {
     console.log("issue type = " + issue_type);
 
     //take the current version and separate it into it's components: Major, Minor, & Patch
-    let [major, minor, patch] = current_Version.split(".");
+    let [major, minor, patch, subtask] = current_Version.split(".");
 
     if (issue_type == Issue_Types.Story || issue_type == Issue_Types.Service_Request || issue_type == Issue_Types.Service_Request_With_Approvals || issue_type == Issue_Types.Change) {
         minor = parseInt(minor) + 1;
@@ -37,12 +38,13 @@ try {
         patch = parseInt(patch) + 1;
         console.log("Incremented patch value.");
     } else if (issue_type == Issue_Types.Subtask) {
-        //do nothing
+        subtask = parseInt(subtask) + 1;
+        console.log("Incremented subtask value.");
     } else {
         throw new Error('No issue match.');
     }
 
-    let new_version = major.concat('.', minor, '.', patch);
+    let new_version = major.concat('.', minor, '.', patch, '.', subtask);
     console.log("new version = " + new_version);
     core.setOutput("new_version", new_version)
 
